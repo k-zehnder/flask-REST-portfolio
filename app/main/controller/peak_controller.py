@@ -15,9 +15,4 @@ class PeakList(Resource):
     def get(self):
         """List all peaks"""
         return get_all_peaks()
-
-
-
-
-
-
+        
