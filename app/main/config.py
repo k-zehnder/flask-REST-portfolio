@@ -12,8 +12,6 @@ class Config:
     # Swagger
     RESTX_MASK_SWAGGER = False
 
-
-
 class DevelopmentConfig(Config):
     # uncomment the line below to use postgres
     # SQLALCHEMY_DATABASE_URI = postgres_local_base

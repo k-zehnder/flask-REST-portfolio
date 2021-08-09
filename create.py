@@ -21,7 +21,7 @@ print(df.head().columns)
 for d in df_dict:
     p = Peak(
         mountain_peak=d["Mountain Peak"],
-        mountain_range=d["Mountain Range"]
+        mountain_range=d["Mountain Range"],
         # elevation_ft=d["Elevation_ft"],
         # fourteener=d["fourteener"],
         # distance_mi=d["Distance_mi"],
