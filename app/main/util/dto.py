@@ -15,5 +15,5 @@ class PeakDto:
     api = Namespace('peak', description='peak related operations')
     peak = api.model('peak', {
         'mountain_peak': fields.String(required=True, description='mountain peak name'),
-        'mountain_range': fields.String(required=True, description='range that mountain peak resides on')
+        'range_id': fields.String(required=True, description='range that mountain peak has relationship with')
     })
