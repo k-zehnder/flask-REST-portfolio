@@ -19,23 +19,6 @@ ranges = df["Mountain Range"].unique()
 
 db.create_all()
 
-# for r in sorted(ranges):
-#     r = Range(
-#         mountain_range=r
-#     )
-#     db.session.add(r)
-#     db.session.commit()
-#     print(f"range: {r}")
-    # tmp = df[df["Mountain Range"] == r]
-    # for index, row in tmp.iterrows():
-    #     print(row["Elevation_ft"], row["Mountain Peak"])
-    #     p = Peak(
-    #         mountain_peak=row["Mountain Peak"],
-    #         range_mountain_range=r.id
-    #     )
-    #     db.session.add(p)
-    #     db.session.commit()
-
 ranges = df["Mountain Range"].unique()
 
 for r in sorted(ranges):
@@ -69,23 +52,6 @@ for r in ranges:
         print(p)
         db.session.add(p)
     db.session.commit()
-
-#############################################################
-# for d in df_dict:
-#     p = Peak(
-#         mountain_peak=d["Mountain Peak"],
-#         mountain_range=d["Mountain Range"],
-#         # elevation_ft=d["Elevation_ft"],
-#         # fourteener=d["fourteener"],
-#         # distance_mi=d["Distance_mi"],
-#         # elevation_gain_ft=d["Elevation Gain_ft"],
-#         # difficulty=d["Difficulty"],
-#         # traffic_low=d["Traffic Low"],
-#         # traffic_high=d["Traffic High"],
-#         # photo=d["photo"]
-#     )
-#     db.session.add(p)
-# db.session.commit()
 
 
 # create db in flask shell
