@@ -11,6 +11,8 @@ from app.main.model.peak import Peak, Range
 # create app context and push it
 app = create_app(os.getenv('BOILERPLATE_ENV') or 'dev')
 app.app_context().push()
+
+# create database
 db.create_all()
 
 # grab data from csv
@@ -51,12 +53,3 @@ for r in ranges:
         db.session.add(p)
     db.session.commit()
 
-
-# create db in flask shell
-# python manage.py db init
-# python manage.py db migrate --message 'initial database migration'
-# python manage.py db upgrade
-# python3 create.py
-
-# Screenshot
-# /home/batman/Desktop/flask_migrate_portfolio_fourteeners.png

@@ -4,7 +4,6 @@ import datetime
 from ..config import key
 from typing import Union
 
-
 class Range(db.Model):
     __tablename__ = "range"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -29,25 +28,3 @@ class Peak(db.Model):
     # photo=
 
     range_id = db.Column(db.Integer, db.ForeignKey('range.id'))
-
-# > p1 = Peak(mountain_peak="peak1", range_id=r.id)
-# >>> db.session.add(p1)
-# >>> db.session.commit()
-# >>> 
-
-
-# >>> from app.main import db
-# >>> from app.main.model.peak import Peak, Range
-# >>> Range.query.first()
-# <Range 1>
-# >>> r = Range.query.first()
-# >>> r.peaks
-# [<Peak 1>]
-# >>> for p in r.peaks:
-# ...     print(p)
-# ... 
-# <Peak 1>
-# >>> for p in r.peaks:
-# ...     print(p.mountain_peak)
-# ... 
-# peak1
