@@ -6,7 +6,7 @@ from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
 
 from app.main import create_app, db
-from app.main.model.peak import Peak, Range
+from app.main.model.peak import Peak, Range, Review
 
 # create app context and push it
 app = create_app(os.getenv('BOILERPLATE_ENV') or 'dev')
@@ -52,4 +52,18 @@ for r in ranges:
         print(p)
         db.session.add(p)
     db.session.commit()
+
+# wanted_peak = Peak.query.filter_by(mountain_peak=data["mountain_peak"]).first()
+
+mountain_peak = "Castle Peak"
+wanted_peak_obj = Peak.query.filter_by(mountain_peak=mountain_peak).first()
+
+r = Review(
+    reviewer_name="reviewer1",
+    review_text="hard climb!",
+    peak_name=wanted_peak_obj.mountain_peak
+)
+db.session.add(r)
+db.session.commit()
+
 

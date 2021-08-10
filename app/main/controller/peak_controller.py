@@ -16,3 +16,12 @@ class PeakList(Resource):
         """List all peaks"""
         return get_all_peaks()
         
+
+    @api.expect(_peak, validate=True)
+    @api.response(201, "Review successfully created.")
+    @api.doc("Create new review.")
+    def post(self):
+        """Create review for peak"""
+        data = request.json
+        return save_new_review(data=data)
+
