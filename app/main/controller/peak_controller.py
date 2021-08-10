@@ -2,11 +2,12 @@ from flask import request
 from flask_restx import Resource
 
 from ..util.dto import PeakDto
-from ..service.peak_service import save_changes, get_all_peaks
+from ..service.peak_service import save_changes, get_all_peaks, save_new_review
 from typing import Dict, Tuple
 
 api = PeakDto.api
 _peak = PeakDto.peak
+_review = PeakDto.review
 
 @api.route('/')
 class PeakList(Resource):
@@ -17,7 +18,7 @@ class PeakList(Resource):
         return get_all_peaks()
         
 
-    @api.expect(_peak, validate=True)
+    @api.expect(_review, validate=True)
     @api.response(201, "Review successfully created.")
     @api.doc("Create new review.")
     def post(self):
