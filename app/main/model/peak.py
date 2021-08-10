@@ -27,4 +27,5 @@ class Peak(db.Model):
     # traffic_high=
     # photo=
 
-    range_id = db.Column(db.Integer, db.ForeignKey('range.id'))
+    # range_id = db.Column(db.Integer, db.ForeignKey('range.id'))
+    range_name = db.Column(db.Integer, db.ForeignKey('range.mountain_range'))

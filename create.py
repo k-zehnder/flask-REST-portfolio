@@ -47,7 +47,7 @@ for r in ranges:
             # photo=d["photo"]
 
             # foreign key
-            range_id=r.id
+            range_name=r.mountain_range # r.id
         )
         print(p)
         db.session.add(p)
