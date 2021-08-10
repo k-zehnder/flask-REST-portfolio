@@ -10,9 +10,12 @@ def save_changes(data: Peak) -> None:
     db.session.commit()
 
 def save_new_review(data):
+###########################################
+# TODO: Hard coded this peak because for debugging its filtering depending on the POST request values. SO if none, it wont find any.
     mountain_peak = "Castle Peak"
     wanted_peak_obj = Peak.query.filter_by(mountain_peak=mountain_peak).first()
     print(f"wanted peak obj: {wanted_peak_obj.mountain_peak}")
+###########################################
 
     # wanted_peak_obj = Peak.query.filter_by(mountain_peak=data["mountain_peak"]).first()
 
