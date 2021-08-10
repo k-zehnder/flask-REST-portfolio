@@ -1,6 +1,10 @@
 # flask-REST-portfolio
-### Development stil underway for project.
+# Deployed at : https://fourteenerstats.com/
 
-API Awesomeness with Flask
+Development stil underway for project.
 
-![Table Example](usage.png)
+![Demo 1](usage1.png)
+![Demo 2](usage2.png)
+
+Thanks for visiting :)
+www.meet-kevin-z.com
