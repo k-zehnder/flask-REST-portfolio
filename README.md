@@ -2,4 +2,4 @@
 
 API Awesomeness with Flask
 
-![Table Example](usagegit.png)
+![Table Example](usage.png)
