@@ -44,9 +44,7 @@ for r in ranges:
             traffic_low=row["Traffic Low"],
             traffic_high=row["Traffic High"],
             photo=row["photo"],
-
-            # foreign key
-            range_name=r.mountain_range # r.id
+            range_name=r.mountain_range # foreign key
         )
         print(p)
         db.session.add(p)

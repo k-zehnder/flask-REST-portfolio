@@ -1,4 +1,3 @@
-
 from .. import db
 import datetime
 from ..config import key
@@ -7,6 +6,7 @@ from typing import Union
 class Ranges(db.Model):
     """ Range Model for storing range related details """
     __tablename__ = "ranges"
+
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     mountain_range = db.Column(db.String(255),  nullable=False, unique=True)
 
@@ -19,19 +19,17 @@ class Peaks(db.Model):
 
     id=db.Column(db.Integer, primary_key=True, autoincrement=True)
     mountain_peak=db.Column(db.String(255), unique=True, nullable=False)
-    elevation_ft=db.Column(db.String(255),  nullable=False)
-    fourteener=db.Column(db.String(255),  nullable=False)
-    distance_mi=db.Column(db.Integer,  nullable=False)
-    elevation_gain_ft=db.Column(db.String(255),  nullable=False)
-    difficulty=db.Column(db.String(255),  nullable=False)
-    traffic_low=db.Column(db.Integer,  nullable=False)
-    traffic_high=db.Column(db.Integer,  nullable=False)
-    photo=db.Column(db.String(255),  nullable=False)
+    elevation_ft=db.Column(db.String(255), nullable=False)
+    fourteener=db.Column(db.String(255), nullable=False)
+    distance_mi=db.Column(db.Integer, nullable=False)
+    elevation_gain_ft=db.Column(db.String(255), nullable=False)
+    difficulty=db.Column(db.String(255), nullable=False)
+    traffic_low=db.Column(db.Integer, nullable=False)
+    traffic_high=db.Column(db.Integer, nullable=False)
+    photo=db.Column(db.String(500), nullable=False)
 
     range_name = db.Column(db.String(255), db.ForeignKey('ranges.mountain_range'))
-
     reviews = db.relationship('Reviews', backref='peaks', lazy=True)
-
 
 class Reviews(db.Model):
     __tablename__ = "reviews"

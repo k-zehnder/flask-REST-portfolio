@@ -6,14 +6,16 @@ def get_all_peaks():
     return Peaks.query.all()
 
 def get_all_reviews():
+    print(f"type: {Reviews.query.all()}")
     return Reviews.query.all()
 
 def reviews_by_peak(peak):
-    wanted_reviews = Reviews.query.filter_by(review_peak=peak).all()
-    print([i.review_peak for i in wanted_reviews])
-    return wanted_reviews
+    return Reviews.query.filter_by(review_peak=peak).all()
 
-def save_changes(data: Peaks) -> None:
+def get_photo(peak):
+    return Peaks.query.filter_by(mountain_peak=peak).first()
+
+def save_changes(data):
     db.session.add(data)
     db.session.commit()
 
@@ -39,6 +41,6 @@ def save_new_review(data):
 
     response_object = {
         "status": "success",
-        "message": f"Successfully entered review for reviewer name: {name}.",
+        "message": f"Successfully entered review for reviewer {name}.",
     }
     return response_object, 201

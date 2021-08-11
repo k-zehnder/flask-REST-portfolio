@@ -14,7 +14,10 @@ class PeaksDto:
         'photo': fields.String(required=True, description='photo'),
         
         # foreign key
-        'range_name': fields.String(required=True, description='range that mountain peak has relationship with')
+        'range_name': fields.String(required=True, description='range that mountain peak has relationship with')})
+
+    photo = api.model('photo', {
+        'photo': fields.String(required=True, description='photo URL for peak'),
     })
 
 class ReviewsDto:

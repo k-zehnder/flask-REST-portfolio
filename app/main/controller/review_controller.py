@@ -9,9 +9,6 @@ api = ReviewsDto.api
 _reviews = ReviewsDto.reviews
 _reviews_by_peak = ReviewsDto.reviews_by_peak
 
-# upload_parser = api.parser()
-# upload_parser.add_argument('mountain_peak')
-
 @api.route('/')
 class ReviewsList(Resource):
     @api.doc('list_of_all_reviews')
