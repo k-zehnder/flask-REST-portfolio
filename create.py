@@ -16,8 +16,7 @@ app.app_context().push()
 db.create_all()
 
 # grab data from csv
-df = pd.read_csv(
-    "14er.csv", encoding='latin1')
+df = pd.read_csv("14er.csv", encoding='latin1')
 ranges = df["Mountain Range"].unique()
 
 # have to commit to db before looping through
@@ -37,14 +36,14 @@ for r in ranges:
         print(row['Elevation_ft'], row['Mountain Peak'])
         p = Peaks(
             mountain_peak=row["Mountain Peak"],
-            # elevation_ft=d["Elevation_ft"],
-            # fourteener=d["fourteener"],
-            # distance_mi=d["Distance_mi"],
-            # elevation_gain_ft=d["Elevation Gain_ft"],
-            # difficulty=d["Difficulty"],
-            # traffic_low=d["Traffic Low"],
-            # traffic_high=d["Traffic High"],
-            # photo=d["photo"]
+            elevation_ft=row["Elevation_ft"],
+            fourteener=row["fourteener"],
+            distance_mi=row["Distance_mi"],
+            elevation_gain_ft=row["Elevation Gain_ft"],
+            difficulty=row["Difficulty"],
+            traffic_low=row["Traffic Low"],
+            traffic_high=row["Traffic High"],
+            photo=row["photo"],
 
             # foreign key
             range_name=r.mountain_range # r.id
@@ -54,15 +53,15 @@ for r in ranges:
     db.session.commit()
 
 # wanted_peak = Peak.query.filter_by(mountain_peak=data["mountain_peak"]).first()
-# mountain_peak = "Castle Peak"
-# wanted_peak_obj = Peaks.query.filter_by(mountain_peak=mountain_peak).first()
+mountain_peak = "Castle Peak"
+wanted_peak_obj = Peaks.query.filter_by(mountain_peak=mountain_peak).first()
 
-# r = Reviews(
-#     reviewer_name="reviewer1",
-#     review_text="hard climb!",
-#     review_peak=wanted_peak_obj.mountain_peak
-# )
-# db.session.add(r)
-# db.session.commit()
+r = Reviews(
+    reviewer_name="reviewer1",
+    review_text="hard climb!",
+    review_peak=wanted_peak_obj.mountain_peak
+)
+db.session.add(r)
+db.session.commit()
 
 

@@ -8,6 +8,11 @@ def get_all_peaks():
 def get_all_reviews():
     return Reviews.query.all()
 
+def reviews_by_peak(peak):
+    wanted_reviews = Reviews.query.filter_by(review_peak=peak).all()
+    print([i.review_peak for i in wanted_reviews])
+    return wanted_reviews
+
 def save_changes(data: Peaks) -> None:
     db.session.add(data)
     db.session.commit()

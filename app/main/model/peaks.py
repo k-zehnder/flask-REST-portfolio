@@ -17,16 +17,16 @@ class Peaks(db.Model):
     """ Peak Model for storing peak related details """
     __tablename__ = "peaks"
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    mountain_peak = db.Column(db.String(255), unique=True, nullable=False)
-    # elevation_ft=
-    # fourteener=
-    # distance_mi=
-    # elevation_gain_ft=
-    # difficulty=
-    # traffic_low=
-    # traffic_high=
-    # photo=
+    id=db.Column(db.Integer, primary_key=True, autoincrement=True)
+    mountain_peak=db.Column(db.String(255), unique=True, nullable=False)
+    elevation_ft=db.Column(db.String(255),  nullable=False)
+    fourteener=db.Column(db.String(255),  nullable=False)
+    distance_mi=db.Column(db.Integer,  nullable=False)
+    elevation_gain_ft=db.Column(db.String(255),  nullable=False)
+    difficulty=db.Column(db.String(255),  nullable=False)
+    traffic_low=db.Column(db.Integer,  nullable=False)
+    traffic_high=db.Column(db.Integer,  nullable=False)
+    photo=db.Column(db.String(255),  nullable=False)
 
     range_name = db.Column(db.String(255), db.ForeignKey('ranges.mountain_range'))
 
