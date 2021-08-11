@@ -17,7 +17,7 @@ db.create_all()
 
 # grab data from csv
 df = pd.read_csv(
-    "/home/batman/Desktop/flask-REST-portfolio/14er.csv", encoding='latin1')
+    "14er.csv", encoding='latin1')
 ranges = df["Mountain Range"].unique()
 
 # have to commit to db before looping through
