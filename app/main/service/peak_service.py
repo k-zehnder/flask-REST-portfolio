@@ -1,34 +1,39 @@
 from app.main import db
-from app.main.model.peak import Peak, Range, Review
+from app.main.model.peaks import Peaks, Ranges, Reviews
 from typing import Dict, Tuple
 
 def get_all_peaks():
-    return Peak.query.all()
+    return Peaks.query.all()
 
-def save_changes(data: Peak) -> None:
+def get_all_reviews():
+    return Reviews.query.all()
+
+def save_changes(data: Peaks) -> None:
     db.session.add(data)
     db.session.commit()
 
 def save_new_review(data):
-###########################################
-# TODO: Hard coded this peak because for debugging its filtering depending on the POST request values. SO if none, it wont find any.
-    mountain_peak = "Castle Peak"
-    wanted_peak_obj = Peak.query.filter_by(mountain_peak=mountain_peak).first()
+    wanted_peak_obj = Peaks.query.filter_by(mountain_peak=data["review_peak"]).first()
     print(f"wanted peak obj: {wanted_peak_obj.mountain_peak}")
-###########################################
 
-    # wanted_peak_obj = Peak.query.filter_by(mountain_peak=data["mountain_peak"]).first()
-
-    r = Review(
+    r = Reviews(
         reviewer_name=data["reviewer_name"],
         review_text=data["review_text"],
-        peak_name=wanted_peak_obj.mountain_peak
+        review_peak=wanted_peak_obj.mountain_peak
     )
     db.session.add(r)
     db.session.commit()
 
-    
     name  = data["reviewer_name"]
     text = data["review_text"]
+    peak_name = data["review_peak"]
+
     print(f"reviewer name: {name}")
     print(f"reviewer text: {text}")
+    print(f"reviewer mtn: {peak_name}")
+
+    response_object = {
+        "status": "success",
+        "message": f"Successfully entered review for reviewer name: {name}.",
+    }
+    return response_object, 201

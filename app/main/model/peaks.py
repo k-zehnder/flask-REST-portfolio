@@ -4,18 +4,18 @@ import datetime
 from ..config import key
 from typing import Union
 
-class Range(db.Model):
+class Ranges(db.Model):
     """ Range Model for storing range related details """
-    __tablename__ = "range"
+    __tablename__ = "ranges"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    mountain_range = db.Column(db.String(255), unique=True, nullable=False)
+    mountain_range = db.Column(db.String(255),  nullable=False, unique=True)
 
-    peaks = db.relationship('Peak', backref='range', lazy=True)
+    peaks = db.relationship('Peaks', backref='ranges', lazy=True)
 
 
-class Peak(db.Model):
+class Peaks(db.Model):
     """ Peak Model for storing peak related details """
-    __tablename__ = "peak"
+    __tablename__ = "peaks"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     mountain_peak = db.Column(db.String(255), unique=True, nullable=False)
@@ -28,16 +28,17 @@ class Peak(db.Model):
     # traffic_high=
     # photo=
 
-    range_name = db.Column(db.Integer, db.ForeignKey('range.mountain_range'))
+    range_name = db.Column(db.String(255), db.ForeignKey('ranges.mountain_range'))
 
-    reviews = db.relationship('Review', backref='peak', lazy=True)
+    reviews = db.relationship('Reviews', backref='peaks', lazy=True)
 
 
-class Review(db.Model):
+class Reviews(db.Model):
+    __tablename__ = "reviews"
+
     """ Review Model for storing review related details """
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    reviewer_name = db.Column(db.String(255), unique=True)
-    review_text = db.Column(db.String(255), unique=True)
+    reviewer_name = db.Column(db.String(255), nullable=False, unique=True)
+    review_text = db.Column(db.String(255), nullable=False)
 
-
-    peak_name = db.Column(db.Integer, db.ForeignKey('peak.mountain_peak'))
+    review_peak = db.Column(db.String(255), db.ForeignKey('peaks.mountain_peak'))

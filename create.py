@@ -6,7 +6,7 @@ from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
 
 from app.main import create_app, db
-from app.main.model.peak import Peak, Range, Review
+from app.main.model.peaks import Peaks, Ranges, Reviews
 
 # create app context and push it
 app = create_app(os.getenv('BOILERPLATE_ENV') or 'dev')
@@ -23,19 +23,19 @@ ranges = df["Mountain Range"].unique()
 # have to commit to db before looping through
 for r in sorted(ranges):
     print(f"range: {r}")
-    r = Range(
+    r = Ranges(
         mountain_range=r
     )
     db.session.add(r)
 db.session.commit()
 
 # loop through ranges and get associated mountain peaks
-ranges = Range.query.all()
+ranges = Ranges.query.all()
 for r in ranges:
     tmp = df[df["Mountain Range"] == r.mountain_range]
     for index, row in tmp.iterrows():
         print(row['Elevation_ft'], row['Mountain Peak'])
-        p = Peak(
+        p = Peaks(
             mountain_peak=row["Mountain Peak"],
             # elevation_ft=d["Elevation_ft"],
             # fourteener=d["fourteener"],
@@ -54,16 +54,15 @@ for r in ranges:
     db.session.commit()
 
 # wanted_peak = Peak.query.filter_by(mountain_peak=data["mountain_peak"]).first()
+# mountain_peak = "Castle Peak"
+# wanted_peak_obj = Peaks.query.filter_by(mountain_peak=mountain_peak).first()
 
-mountain_peak = "Castle Peak"
-wanted_peak_obj = Peak.query.filter_by(mountain_peak=mountain_peak).first()
-
-r = Review(
-    reviewer_name="reviewer1",
-    review_text="hard climb!",
-    peak_name=wanted_peak_obj.mountain_peak
-)
-db.session.add(r)
-db.session.commit()
+# r = Reviews(
+#     reviewer_name="reviewer1",
+#     review_text="hard climb!",
+#     review_peak=wanted_peak_obj.mountain_peak
+# )
+# db.session.add(r)
+# db.session.commit()
 
 
