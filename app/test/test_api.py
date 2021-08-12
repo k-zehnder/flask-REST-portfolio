@@ -14,11 +14,13 @@ class FlaskTestCase(TestCase):
 
     def setUp(self):
         db.create_all()
-        # db.session.rollback()
+
+        # add range to db
         ranges = Ranges(mountain_range="Elk Mountains")
         db.session.add(ranges)
         db.session.commit()
         
+        # add peak to db given a range
         one_range = ranges.query.first()
         peak = Peaks(
             mountain_peak="Castle Peak",
@@ -35,9 +37,9 @@ class FlaskTestCase(TestCase):
         db.session.add(peak)
         db.session.commit()   
 
+        # add review to db given peak
         mountain_peak = "Castle Peak"
         wanted_peak_obj = Peaks.query.filter_by(mountain_peak=mountain_peak).first()
-
         r = Reviews(
             reviewer_name="reviewer2",
             review_text="hard climb2!",

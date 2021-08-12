@@ -1,12 +1,10 @@
 from app.main import db
 from app.main.model.peaks import Peaks, Ranges, Reviews
-from typing import Dict, Tuple
 
 def get_all_peaks():
     return Peaks.query.all()
 
 def get_all_reviews():
-    print(f"type: {Reviews.query.all()}")
     return Reviews.query.all()
 
 def reviews_by_peak(peak):
@@ -21,7 +19,6 @@ def save_changes(data):
 
 def save_new_review(data):
     wanted_peak_obj = Peaks.query.filter_by(mountain_peak=data["review_peak"]).first()
-    print(f"wanted peak obj: {wanted_peak_obj.mountain_peak}")
 
     r = Reviews(
         reviewer_name=data["reviewer_name"],
@@ -31,16 +28,8 @@ def save_new_review(data):
     db.session.add(r)
     db.session.commit()
 
-    name  = data["reviewer_name"]
-    text = data["review_text"]
-    peak_name = data["review_peak"]
-
-    print(f"reviewer name: {name}")
-    print(f"reviewer text: {text}")
-    print(f"reviewer mtn: {peak_name}")
-
     response_object = {
         "status": "success",
-        "message": f"Successfully entered review for reviewer.",
+        "message": f"Successfully entered review.",
     }
     return response_object, 201
