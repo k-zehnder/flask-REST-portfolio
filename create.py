@@ -51,15 +51,16 @@ for r in ranges:
     db.session.commit()
 
 # wanted_peak = Peak.query.filter_by(mountain_peak=data["mountain_peak"]).first()
-mountain_peak = "Castle Peak"
-wanted_peak_obj = Peaks.query.filter_by(mountain_peak=mountain_peak).first()
+# mountain_peak = "Castle Peak"
+# wanted_peak_obj = Peaks.query.filter_by(mountain_peak=mountain_peak).first()
 
-r = Reviews(
-    reviewer_name="reviewer1",
-    review_text="hard climb!",
-    review_peak=wanted_peak_obj.mountain_peak
-)
-db.session.add(r)
-db.session.commit()
+# r = Reviews(
+#     reviewer_name="reviewer1",
+#     review_text="hard climb!",
+#     review_peak=wanted_peak_obj.mountain_peak
+# )
+# db.session.add(r)
+# db.session.commit()
 
-
+#from app.main import db
+#from app.main.model.peaks import Peaks, Reviews, Ranges
