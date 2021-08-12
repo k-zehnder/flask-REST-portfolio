@@ -35,19 +35,31 @@ class FlaskTestCase(TestCase):
     # test peaks
     def test_peaks(self):
         tester = self.app.test_client(self)
-        response = tester.get('/', content_type='application/json')
+        response = tester.get('/peaks/', content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+
+    # test why 3-8
+    def test_why_308(self):
+        tester = self.app.test_client(self)
+        response = tester.get('/peaks', content_type='application/json')
         self.assertEqual(response.status_code, 200)
 
     # test reviews
     def test_index(self):
         tester = self.app.test_client(self)
-        response = tester.get('/', content_type='application/json')
+        response = tester.get('/reviews/', content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+    
+    # test reviews by peak
+    def test_index(self):
+        tester = self.app.test_client(self)
+        response = tester.get('/reviews/Castle Peak', content_type='application/json')
         self.assertEqual(response.status_code, 200)
 
     # test photo
     def test_photo(self):
         tester = self.app.test_client(self)
-        response = tester.get('/', content_type='application/json')
+        response = tester.get('/peaks/Castle Peak', content_type='application/json')
         self.assertEqual(response.status_code, 200)
 
 if __name__ == '__main__':
