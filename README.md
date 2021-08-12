@@ -1,7 +1,5 @@
 # flask-REST-portfolio
-# Deployed at : https://fourteenerstats.com/
-
-Development stil underway for project.
+# Se project at : https://fourteenerstats.com/
 
 ![Demo 1](usage.png)
 
