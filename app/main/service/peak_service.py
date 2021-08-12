@@ -41,6 +41,6 @@ def save_new_review(data):
 
     response_object = {
         "status": "success",
-        "message": f"Successfully entered review for reviewer {name}.",
+        "message": f"Successfully entered review for reviewer.",
     }
     return response_object, 201
