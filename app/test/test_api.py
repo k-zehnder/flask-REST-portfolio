@@ -6,10 +6,10 @@ from wsgi import app
 from app.main.model.peaks import Peaks, Ranges, Reviews
 
 class FlaskTestCase(TestCase):
-    """ Base Tests """
+    """ API Tests """
 
     def create_app(self):
-        app.config.from_object('test')
+        app.config.from_object("test")
         return app
 
     def setUp(self):

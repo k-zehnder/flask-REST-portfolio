@@ -24,12 +24,12 @@ def save_new_review(data):
         reviewer_name=data["reviewer_name"],
         review_text=data["review_text"],
         review_peak=wanted_peak_obj.mountain_peak
-    )
+        )
     db.session.add(r)
     db.session.commit()
 
     response_object = {
         "status": "success",
-        "message": f"Successfully entered review.",
+        "message": "Successfully entered review.",
     }
     return response_object, 201

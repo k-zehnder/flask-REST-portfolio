@@ -8,7 +8,7 @@ blueprint = Blueprint('api', __name__)
 
 api = Api(
     blueprint,
-    title='FLASK RESTPLUS(RESTX) API by Kevin Zehnder',
+    title='FLASK REST API by Kevin Zehnder',
     version='1.0',
     description='Flask RESTPLUS Web Service'
 )

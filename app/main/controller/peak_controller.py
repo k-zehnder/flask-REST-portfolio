@@ -17,7 +17,7 @@ class PeaksList(Resource):
         """List all peaks"""
         return get_all_peaks()
         
-@api.route('/<mountain_peak>')
+@api.route('/photos/<mountain_peak>')
 class PhotosList(Resource):
     @api.doc('peak_photo')
     @api.marshal_list_with(_photo, envelope='data')

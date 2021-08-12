@@ -2,9 +2,6 @@ import os
 import unittest
 import pandas as pd
 
-from flask_migrate import Migrate, MigrateCommand
-from flask_script import Manager
-
 from app.main import create_app, db
 from app.main.model.peaks import Peaks, Ranges, Reviews
 
@@ -21,7 +18,6 @@ ranges = df["Mountain Range"].unique()
 
 # have to commit to db before looping through
 for r in sorted(ranges):
-    print(f"range: {r}")
     r = Ranges(
         mountain_range=r
     )
@@ -50,17 +46,4 @@ for r in ranges:
         db.session.add(p)
     db.session.commit()
 
-# wanted_peak = Peak.query.filter_by(mountain_peak=data["mountain_peak"]).first()
-# mountain_peak = "Castle Peak"
-# wanted_peak_obj = Peaks.query.filter_by(mountain_peak=mountain_peak).first()
 
-# r = Reviews(
-#     reviewer_name="reviewer1",
-#     review_text="hard climb!",
-#     review_peak=wanted_peak_obj.mountain_peak
-# )
-# db.session.add(r)
-# db.session.commit()
-
-#from app.main import db
-#from app.main.model.peaks import Peaks, Reviews, Ranges
