@@ -76,13 +76,6 @@ class FlaskTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTrue(response.content_type == 'application/json')
 
-    # test why 3-8
-    def test_why_308(self):
-        tester = self.app.test_client(self)
-        response = tester.get('/peaks', content_type='application/json')
-        self.assertEqual(response.status_code, 200)
-        self.assertTrue(response.content_type == 'application/json')
-
     # test reviews
     def test_index(self):
         tester = self.app.test_client(self)
