@@ -29,7 +29,6 @@ ranges = Ranges.query.all()
 for r in ranges:
     tmp = df[df["Mountain Range"] == r.mountain_range]
     for index, row in tmp.iterrows():
-        print(row['Elevation_ft'], row['Mountain Peak'])
         p = Peaks(
             mountain_peak=row["Mountain Peak"],
             elevation_ft=row["Elevation_ft"],
